@@ -27,7 +27,6 @@ export class ChangeBuffer implements Buffer {
   }
 
   rollback() {
-    _.set('buffer', this.object, this);
     this.buffer = _.cloneDeep(this.object);
     return this.buffer;
   }
@@ -37,8 +36,7 @@ export class ChangeBuffer implements Buffer {
   }
 
   set(path: string, newValue: any) {
-    let newObject = _.set(path, newValue, this.buffer);
-    this.buffer = newObject;
+    this.buffer = _.set(path, newValue, this.buffer);
   }
 
   apply() {
