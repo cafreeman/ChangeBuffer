@@ -2,19 +2,34 @@ import * as _ from 'lodash/fp';
 
 interface Buffer {
   buffer: {}
-  changes: any[],
+  isClean: () => boolean,
+  isDirty: () => boolean,
   set: (path: string, value: any) => void
   get: (path: string) => any
+  rollback: () => {}
   apply: () => {}
 }
 
 export class ChangeBuffer implements Buffer {
   private object;
   public buffer: {};
-  public changes: any[];
   constructor(object) {
+    this.object = object;
     this.buffer = _.cloneDeep(object);
-    this.changes = [];
+  }
+
+  isClean() {
+    return _.isEqual(this.object, this.buffer);
+  }
+
+  isDirty() {
+    return _.negate(_.isEqual)(this.object, this.buffer);
+  }
+
+  rollback() {
+    _.set('buffer', this.object, this);
+    this.buffer = _.cloneDeep(this.object);
+    return this.buffer;
   }
 
   get(path: string): any {
