@@ -1,6 +1,6 @@
 import * as _ from 'lodash/fp';
 
-interface IChangeBuffer {
+interface Buffer {
   buffer: {}
   changes: any[],
   set: (path: string, value: any) => void
@@ -8,12 +8,11 @@ interface IChangeBuffer {
   apply: () => {}
 }
 
-export class ChangeBuffer implements IChangeBuffer {
+export class ChangeBuffer implements Buffer {
   private object;
   public buffer: {};
-  public changes : any[];
+  public changes: any[];
   constructor(object) {
-
     this.buffer = _.cloneDeep(object);
     this.changes = [];
   }
@@ -28,6 +27,6 @@ export class ChangeBuffer implements IChangeBuffer {
   }
 
   apply() {
-    return _.assign(this.buffer, this.object);
+    return _.assign(this.object, this.buffer);
   }
 }
