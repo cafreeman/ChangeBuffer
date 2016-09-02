@@ -16,7 +16,7 @@ describe('Updating existing properties on a ChangeBuffer', () => {
   let nestedValueTest = {
     testTitle: 'setting a nested value',
     startingObject: chris,
-    path: 'favoriteBooks[0].title',
+    path: 'favoriteBooks.0.title',
     oldValue: 'The Sun Also Rises',
     newValue: 'A Moveable Feast'
   };
@@ -26,7 +26,7 @@ describe('Updating existing properties on a ChangeBuffer', () => {
   let nestedObjectTest = {
     testTitle: 'setting a nested object',
     startingObject: chris,
-    path: 'favoriteBooks[0]',
+    path: 'favoriteBooks.0',
     oldValue: sunAlsoRises,
     newValue: new Book('The Trial', 'Franz Kafka')
   };

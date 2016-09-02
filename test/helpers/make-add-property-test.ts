@@ -1,5 +1,5 @@
 import { ChangeBuffer } from '../../src/index';
-import * as _ from 'lodash/fp';
+import { get } from '../../src/utils/get';
 
 interface AddPropTestConfig {
   testTitle: string;
@@ -26,7 +26,7 @@ export function makeAddPropertyTest(config: AddPropTestConfig) {
       });
 
       it('does not add the property to the original object', () => {
-        expect(_.get(path, startingObject)).to.be.undefined;
+        expect(get(path, startingObject)).to.be.undefined;
       });
 
       describe('applying the buffer', () => {
@@ -36,11 +36,11 @@ export function makeAddPropertyTest(config: AddPropTestConfig) {
         });
 
         it('produces a new object with the added property', () => {
-          expect(_.get(path, newThing)).to.equal(newValue);
+          expect(get(path, newThing)).to.equal(newValue);
         });
 
         it('does not change the original object', () => {
-          expect(_.get(path, startingObject)).to.be.undefined;
+          expect(get(path, startingObject)).to.be.undefined;
         });
       });
     });

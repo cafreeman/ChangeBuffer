@@ -1,7 +1,5 @@
 import { expect } from 'chai';
-import * as _ from 'lodash/fp';
 import { chris } from './fixtures/chris';
-import { ChangeBuffer } from '../src/index';
 import { makeAddPropertyTest } from './helpers/make-add-property-test';
 
 describe('Adding new properties to a ChangeBuffer', () => {

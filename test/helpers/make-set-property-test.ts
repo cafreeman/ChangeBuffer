@@ -1,5 +1,6 @@
 import { ChangeBuffer } from '../../src/index';
-import * as _ from 'lodash/fp';
+import { get } from '../../src/utils/get';
+// import * as _ from 'lodash/fp';
 
 interface UpdatePropTestConfig {
   testTitle: string;
@@ -27,7 +28,7 @@ export function makeSetPropertyTest(config: UpdatePropTestConfig) {
       });
 
       it('does not change the underlying object', () => {
-        expect(_.get(path, startingObject)).to.equal(oldValue);
+        expect(get(path, startingObject)).to.equal(oldValue);
       });
 
       describe('applying the buffer', () => {
@@ -42,11 +43,11 @@ export function makeSetPropertyTest(config: UpdatePropTestConfig) {
         })
 
         it('reflects the correct changes', () => {
-          expect(_.get(path, newThing)).to.equal(newValue);
+          expect(get(path, newThing)).to.equal(newValue);
         });
 
         it('does not mutate the original object', () => {
-          expect(_.get(path, startingObject)).to.equal(oldValue);
+          expect(get(path, startingObject)).to.equal(oldValue);
         });
       });
     });
