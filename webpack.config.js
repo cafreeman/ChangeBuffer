@@ -1,7 +1,10 @@
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 module.exports = {
   entry: './src/index.ts',
   output: {
-    filename: 'dist/bundle.js'
+    filename: 'dist/index.js'
   },
   resolve: {
     extensions: ['.ts', '.js', '']
@@ -11,8 +14,17 @@ module.exports = {
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'ts-loader'
-      }
+        loader: 'awesome-typescript-loader'
+      },
     ]
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(['dist','build']),
+    // new webpack.optimize.OccurrenceOrderPlugin,
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   }
+    // }),
+  ]
 }

@@ -1,4 +1,12 @@
-import * as _ from 'lodash/fp';
+// import * as _ from 'lodash/fp';
+import {
+  cloneDeep,
+  isEqual,
+  negate,
+  get,
+  set,
+  assign
+} from 'lodash/fp';
 
 interface Buffer {
   buffer: {}
@@ -15,31 +23,31 @@ export class ChangeBuffer implements Buffer {
   public buffer: {};
   constructor(object) {
     this.object = object;
-    this.buffer = _.cloneDeep(object);
+    this.buffer = cloneDeep(object);
   }
 
   isClean() {
-    return _.isEqual(this.object, this.buffer);
+    return isEqual(this.object, this.buffer);
   }
 
   isDirty() {
-    return _.negate(_.isEqual)(this.object, this.buffer);
+    return negate(isEqual)(this.object, this.buffer);
   }
 
   rollback() {
-    this.buffer = _.cloneDeep(this.object);
+    this.buffer = cloneDeep(this.object);
     return this.buffer;
   }
 
   get(path: string): any {
-    return _.get(path, this.buffer);
+    return get(path, this.buffer);
   }
 
   set(path: string, newValue: any) {
-    this.buffer = _.set(path, newValue, this.buffer);
+    this.buffer = set(path, newValue, this.buffer);
   }
 
   apply() {
-    return _.assign(this.object, this.buffer);
+    return assign(this.object, this.buffer);
   }
 }
