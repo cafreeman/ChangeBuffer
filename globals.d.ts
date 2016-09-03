@@ -12,13 +12,6 @@ interface UpdatePropTestConfig {
   newValue: any;
 }
 
-interface GetPropTestConfig {
-  title: string;
-  data: Indexable;
-  path: string | number;
-  testValue: any;
-}
-
 interface AddPropTestConfig {
   title: string;
   data: Indexable;
