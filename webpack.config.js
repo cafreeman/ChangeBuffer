@@ -1,30 +1,44 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
   output: {
-    filename: 'dist/index.js'
+    filename: 'dist/index.js',
   },
   resolve: {
-    extensions: ['.ts', '.js', '']
+    extensions: ['.ts', '.js', ''],
   },
   module: {
     loaders: [
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'awesome-typescript-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015'],
+          plugins: ['lodash'],
+        },
       },
-    ]
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        loader: 'awesome-typescript-loader',
+      },
+    ],
   },
   plugins: [
-    new CleanWebpackPlugin(['dist','build']),
-    // new webpack.optimize.OccurrenceOrderPlugin,
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false
-    //   }
-    // }),
-  ]
+    new CleanWebpackPlugin(['dist']),
+    new LodashModuleReplacementPlugin({
+      currying: true,
+      paths: true,
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin,
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+    }),
+  ],
 }
