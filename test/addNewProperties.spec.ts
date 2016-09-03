@@ -4,8 +4,8 @@ import { makeAddPropertyTest } from './helpers/make-add-property-test';
 
 describe('Adding new properties to a ChangeBuffer', () => {
   const addRootValueConfig = {
-    testTitle: 'adding a root-level value',
-    startingObject: chris,
+    title: 'adding a root-level value',
+    data: chris,
     path: 'newProp',
     newValue: 'this is a new value'
   };
@@ -13,8 +13,8 @@ describe('Adding new properties to a ChangeBuffer', () => {
   makeAddPropertyTest(addRootValueConfig)(expect);
 
   const addNestedValueConfig = {
-    testTitle: 'add a deeply-nested value',
-    startingObject: chris,
+    title: 'add a deeply-nested value',
+    data: chris,
     path: 'level1.level2.level3',
     newValue: 'this is the new value nested 3 levels deep'
   };
@@ -22,8 +22,8 @@ describe('Adding new properties to a ChangeBuffer', () => {
   makeAddPropertyTest(addNestedValueConfig)(expect);
 
   const addNestedObjectConfig = {
-    testTitle: 'add a deeply-nested object',
-    startingObject: chris,
+    title: 'add a deeply-nested object',
+    data: chris,
     path: 'favorites.movie',
     newValue: { title: 'Apocalypse Now', director: 'Francis Ford Coppola'}
   };
@@ -31,8 +31,8 @@ describe('Adding new properties to a ChangeBuffer', () => {
   makeAddPropertyTest(addNestedObjectConfig)(expect);
 
   const addNestedArrayConfig = {
-    testTitle: 'add a deeply-nested array',
-    startingObject: chris,
+    title: 'add a deeply-nested array',
+    data: chris,
     path: 'details.cats',
     newValue: [
       { name: 'Hitch', color: 'Black' },

@@ -1,22 +1,15 @@
 import { ChangeBuffer } from '../../src/index';
 import { get } from '../../src/utils/get';
 
-interface AddPropTestConfig {
-  testTitle: string;
-  startingObject: {};
-  path: string;
-  newValue: any;
-}
-
 export function makeAddPropertyTest(config: AddPropTestConfig) {
-  const { testTitle, startingObject, path, newValue } = config;
+  const { title, data, path, newValue } = config;
   return (expect) => {
     let buffer: ChangeBuffer;
     beforeEach(() => {
-      buffer = new ChangeBuffer(startingObject);
+      buffer = new ChangeBuffer(data);
     });
 
-    describe(testTitle, () => {
+    describe(title, () => {
       beforeEach(() => {
         buffer.set(path, newValue);
       });
@@ -26,7 +19,7 @@ export function makeAddPropertyTest(config: AddPropTestConfig) {
       });
 
       it('does not add the property to the original object', () => {
-        expect(get(path, startingObject)).to.be.undefined;
+        expect(get(path, data)).to.be.undefined;
       });
 
       describe('applying the buffer', () => {
@@ -40,7 +33,7 @@ export function makeAddPropertyTest(config: AddPropTestConfig) {
         });
 
         it('does not change the original object', () => {
-          expect(get(path, startingObject)).to.be.undefined;
+          expect(get(path, data)).to.be.undefined;
         });
       });
     });

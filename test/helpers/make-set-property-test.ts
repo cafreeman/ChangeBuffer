@@ -1,24 +1,14 @@
 import { ChangeBuffer } from '../../src/index';
 import { get } from '../../src/utils/get';
-// import * as _ from 'lodash/fp';
 
-interface UpdatePropTestConfig {
-  testTitle: string;
-  startingObject: {};
-  path: string;
-  oldValue: any;
-  newValue: any;
-}
-
-export function makeSetPropertyTest(config: UpdatePropTestConfig) {
-  const { testTitle, startingObject, path, oldValue, newValue } = config;
+export function makeSetPropertyTest({ title, data, path, oldValue, newValue }: UpdatePropTestConfig) {
   return (expect) => {
     let buffer: ChangeBuffer;
     beforeEach(() => {
-      buffer = new ChangeBuffer(startingObject);
+      buffer = new ChangeBuffer(data);
     });
 
-    describe(testTitle, () => {
+    describe(title, () => {
       beforeEach(() => {
         buffer.set(path, newValue);
       })
@@ -28,7 +18,7 @@ export function makeSetPropertyTest(config: UpdatePropTestConfig) {
       });
 
       it('does not change the underlying object', () => {
-        expect(get(path, startingObject)).to.equal(oldValue);
+        expect(get(path, data)).to.equal(oldValue);
       });
 
       describe('applying the buffer', () => {
@@ -38,8 +28,8 @@ export function makeSetPropertyTest(config: UpdatePropTestConfig) {
         });
 
         it('returns a new object', () => {
-          expect(newThing).to.not.deep.equal(startingObject);
-          expect(newThing).to.not.equal(startingObject);
+          expect(newThing).to.not.deep.equal(data);
+          expect(newThing).to.not.equal(data);
         })
 
         it('reflects the correct changes', () => {
@@ -47,7 +37,7 @@ export function makeSetPropertyTest(config: UpdatePropTestConfig) {
         });
 
         it('does not mutate the original object', () => {
-          expect(get(path, startingObject)).to.equal(oldValue);
+          expect(get(path, data)).to.equal(oldValue);
         });
       });
     });
