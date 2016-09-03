@@ -3,7 +3,7 @@ import { get } from 'lodash/fp';
 
 export function makeSetPropertyTest({ title, data, path, oldValue, newValue }: UpdatePropTestConfig) {
   return (expect) => {
-    let buffer: ChangeBuffer;
+    let buffer: ChangeBuffer<Indexable>;
     beforeEach(() => {
       buffer = new ChangeBuffer(data);
     });

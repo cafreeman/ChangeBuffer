@@ -1,18 +1,18 @@
 import { set, get } from 'lodash/fp';
 
-interface Buffer {
-  buffer: {}
+interface Buffer<T> {
+  buffer: T
   isClean: () => boolean,
   isDirty: () => boolean,
   set: (path: string, value: any) => void
   get: (path: string) => any
-  rollback: () => {}
-  apply: () => {}
+  rollback: () => T
+  apply: () => T
 }
 
-export class ChangeBuffer implements Buffer {
+export class ChangeBuffer<Indexable> implements Buffer<Indexable> {
   private object;
-  public buffer: {};
+  public buffer;
   constructor(object) {
     this.object = this.buffer = object;
   }
