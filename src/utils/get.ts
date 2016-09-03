@@ -1,9 +1,4 @@
-interface Indexable {
-  [prop: string]: any
-  [prop: number]: any
-};
-
-const transformDotPath = (path: string): Array<string> => path.split('.');
+import { transformDotPath } from './transform-dot-path';
 
 export function get(path: string | number, data: Indexable): any {
   if (typeof path === "string") {
