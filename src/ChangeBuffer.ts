@@ -1,6 +1,4 @@
-import * as _ from 'lodash/fp';
-
-import { get } from './utils/get';
+import { set, get } from 'lodash/fp';
 
 interface Buffer {
   buffer: {}
@@ -37,7 +35,7 @@ export class ChangeBuffer implements Buffer {
   }
 
   set(path: string, newValue: any) {
-    this.buffer = _.set(path, newValue, this.buffer);
+    this.buffer = set(path, newValue, this.buffer);
   }
 
   apply() {

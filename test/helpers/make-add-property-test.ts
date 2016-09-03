@@ -1,5 +1,5 @@
 import { ChangeBuffer } from '../../src/index';
-import { get } from '../../src/utils/get';
+import { get } from 'lodash/fp';
 
 export function makeAddPropertyTest(config: AddPropTestConfig) {
   const { title, data, path, newValue } = config;
