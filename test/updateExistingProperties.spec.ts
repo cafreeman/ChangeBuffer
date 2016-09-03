@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { chris, sunAlsoRises, Book, favoriteBooks } from './fixtures/chris';
+import { chris, books, favoriteBooks } from './fixtures/chris';
 import { makeSetPropertyTest } from './helpers/make-set-property-test';
 
 describe('Updating existing properties on a ChangeBuffer', () => {
@@ -27,8 +27,8 @@ describe('Updating existing properties on a ChangeBuffer', () => {
     title: 'setting a nested object',
     data: chris,
     path: 'favoriteBooks.0',
-    oldValue: sunAlsoRises,
-    newValue: new Book('The Trial', 'Franz Kafka')
+    oldValue: books.sunAlsoRises,
+    newValue: books.theTrial
   };
 
   makeSetPropertyTest(nestedObjectTest)(expect);
@@ -38,7 +38,7 @@ describe('Updating existing properties on a ChangeBuffer', () => {
     data: chris,
     path: 'favoriteBooks',
     oldValue: favoriteBooks,
-    newValue: [new Book('The Trial', 'Franz Kafka'), new Book('Tropic of Canceer', 'Henry Miller')]
+    newValue: [books.theTrial, books.tropicOfCancer]
   };
 
   makeSetPropertyTest(arrayOfObjectsTest)(expect);

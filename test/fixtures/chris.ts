@@ -1,6 +1,20 @@
-export class Book {
+class Book {
   constructor(public title: string, public author: string) {}
 }
+
+const sunAlsoRises = new Book('The Sun Also Rises', 'Ernest Hemingway');
+const kavAndClay = new Book('The Amazing Adventures of Kavalier and Clay', 'Michael Chabon');
+const theTrial = new Book('The Trial', 'Franz Kafka')
+const tropicOfCancer = new Book('Tropic of Canceer', 'Henry Miller');
+
+export const books = {
+  sunAlsoRises,
+  kavAndClay,
+  theTrial,
+  tropicOfCancer
+};
+
+export const favoriteBooks = [sunAlsoRises, kavAndClay];
 
 class Person {
   constructor(
@@ -12,11 +26,4 @@ class Person {
   ) {}
 }
 
-export const sunAlsoRises = new Book('The Sun Also Rises', 'Ernest Hemingway');
-export const kavAndClay = new Book('The Amazing Adventures of Kavalier and Clay', 'Michael Chabon');
-
-export const favoriteBooks = [sunAlsoRises, kavAndClay];
-
-const chris = new Person('Chris', 'Freeman', 30, { drink: 'Old-Fashioned' }, favoriteBooks);
-
-export { chris };
+export const chris = new Person('Chris', 'Freeman', 30, { drink: 'Old-Fashioned' }, favoriteBooks);

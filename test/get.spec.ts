@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { chris, sunAlsoRises } from './fixtures/chris';
+import { chris, books} from './fixtures/chris';
 import { makeGetTest } from './helpers/make-get-test';
 
 let objectTestSpecs: Array<GetPropTestConfig> = [
@@ -19,13 +19,13 @@ let objectTestSpecs: Array<GetPropTestConfig> = [
     title: 'getting an element from an array property',
     data: chris,
     path: 'favoriteBooks.0',
-    testValue: sunAlsoRises
+    testValue: books.sunAlsoRises
   },
   {
     title: 'getting a nested value from an array element',
     data: chris,
     path: 'favoriteBooks.0.title',
-    testValue: sunAlsoRises.title
+    testValue: books.sunAlsoRises.title
   },
 ];
 
