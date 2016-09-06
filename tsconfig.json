@@ -3,12 +3,15 @@
     "module": "es2015",
     "target": "es6",
     "noImplicitAny": false,
-    "sourceMap": false,
+    "sourceMap": true,
+    "moduleResolution": "node",
     "outDir": "build",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "declaration": true,
+    "pretty": true
   },
   "compileOnSave": false,
-  "exclude": [
-    "node_modules"
+  "include": [
+    "./src/lib/**/*.ts"
   ]
 }

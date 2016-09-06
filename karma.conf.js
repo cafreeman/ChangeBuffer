@@ -5,12 +5,13 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['mocha', 'chai'],
     files: [
-      'test/**/*.spec.ts'
+      'src/test/**/*.spec.ts',
+      'typings/index.d.ts'
     ],
     exclude: [
     ],
     preprocessors: {
-      'test/**/*spec.ts': ['webpack']
+      'src/test/**/*.spec.ts': ['webpack']
     },
     webpack: {
       module: webpackConfig.module,
@@ -28,7 +29,7 @@ module.exports = function (config) {
     port: 3001,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
+    autoWatch: false,
     browsers: ['Chrome'],
     singleRun: false,
     concurrency: Infinity

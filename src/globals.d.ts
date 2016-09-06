@@ -1,3 +1,13 @@
+// interface Buffer<T> {
+//   buffer: T
+//   isClean: () => boolean,
+//   isDirty: () => boolean,
+//   set: (path: string, value: any) => void
+//   get: (path: string) => any
+//   rollback: () => T
+//   apply: () => T
+// }
+
 interface Indexable {
   [prop: string]: any
   [prop: number]: any

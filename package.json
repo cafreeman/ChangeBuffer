@@ -1,11 +1,14 @@
 {
-  "name": "changesets",
+  "name": "change-buffer",
   "version": "0.0.1",
   "description": "Immutable Change Buffers",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "test": "karma start",
-    "build": "webpack",
+    "bundle": "webpack",
+    "compile": "npm run clean && tsc",
+    "build": "npm run bundle && tsc",
     "clean": "rm -rf build dist"
   },
   "author": "",

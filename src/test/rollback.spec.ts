@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import { chris } from './fixtures/chris';
-import { ChangeBuffer } from '../src/index';
+import { ChangeBuffer } from '../lib/index';
 
 describe('rollback on ChangeBuffer', () => {
-  let buffer: ChangeBuffer;
+  let buffer: ChangeBuffer<Indexable>;
   beforeEach(() => {
     buffer = new ChangeBuffer(chris);
   });

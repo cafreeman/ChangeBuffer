@@ -1,7 +1,7 @@
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/lib/index.ts',
   output: {
-    filename: 'dist/index.js',
+    filename: 'dist/cjs/index.js',
   },
   resolve: {
     extensions: ['.ts', '.js', ''],

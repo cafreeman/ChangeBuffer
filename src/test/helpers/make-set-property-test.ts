@@ -1,4 +1,4 @@
-import { ChangeBuffer } from '../../src/index';
+import { ChangeBuffer } from '../../lib/index';
 import { get } from 'lodash/fp';
 
 export function makeSetPropertyTest({ title, data, path, oldValue, newValue }: UpdatePropTestConfig) {

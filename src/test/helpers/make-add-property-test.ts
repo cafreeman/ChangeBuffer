@@ -1,10 +1,10 @@
-import { ChangeBuffer } from '../../src/index';
+import { ChangeBuffer } from '../../lib/index';
 import { get } from 'lodash/fp';
 
 export function makeAddPropertyTest(config: AddPropTestConfig) {
   const { title, data, path, newValue } = config;
   return (expect) => {
-    let buffer: ChangeBuffer;
+    let buffer: ChangeBuffer<Indexable>;
     beforeEach(() => {
       buffer = new ChangeBuffer(data);
     });
