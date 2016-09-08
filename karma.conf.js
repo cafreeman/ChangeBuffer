@@ -6,7 +6,6 @@ module.exports = function (config) {
     frameworks: ['mocha', 'chai'],
     files: [
       'src/test/**/*.spec.ts',
-      'typings/index.d.ts'
     ],
     exclude: [
     ],
@@ -29,7 +28,7 @@ module.exports = function (config) {
     port: 3001,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: false,
+    autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
     concurrency: Infinity
