@@ -1,5 +1,13 @@
-import { ChangeBuffer } from '../../lib/index';
+import { ChangeBuffer, Indexable } from '../../lib/index';
 import { get } from 'lodash/fp';
+
+export interface UpdatePropTestConfig {
+  title: string;
+  data: Indexable;
+  path: string;
+  oldValue: any;
+  newValue: any;
+}
 
 export function makeSetPropertyTest({ title, data, path, oldValue, newValue }: UpdatePropTestConfig) {
   return (expect) => {

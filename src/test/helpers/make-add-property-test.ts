@@ -1,5 +1,12 @@
-import { ChangeBuffer } from '../../lib/index';
+import { ChangeBuffer, Indexable} from '../../lib/index';
 import { get } from 'lodash/fp';
+
+export interface AddPropTestConfig {
+  title: string;
+  data: Indexable;
+  path: string;
+  newValue: any;
+}
 
 export function makeAddPropertyTest(config: AddPropTestConfig) {
   const { title, data, path, newValue } = config;

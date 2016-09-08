@@ -1,4 +1,4 @@
-class Book {
+export class Book {
   constructor(public title: string, public author: string) {}
 }
 
@@ -16,7 +16,7 @@ export const books = {
 
 export const favoriteBooks = [sunAlsoRises, kavAndClay];
 
-class Person {
+export class Person {
   constructor(
     public firstName: string,
     public lastName: string,

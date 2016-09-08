@@ -1,1 +1,1 @@
-export { ChangeBuffer } from './ChangeBuffer';
+export { ChangeBuffer, Indexable } from './ChangeBuffer';

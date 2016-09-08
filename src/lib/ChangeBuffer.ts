@@ -1,6 +1,6 @@
 import { set, get } from 'lodash/fp';
 
-interface Buffer<T> {
+export interface Buffer<T> {
   buffer: T
   isClean: () => boolean,
   isDirty: () => boolean,
@@ -8,6 +8,11 @@ interface Buffer<T> {
   get: (path: string) => any
   rollback: () => T
   apply: () => T
+}
+
+export interface Indexable {
+  [prop: string]: any
+  [prop: number]: any
 }
 
 export class ChangeBuffer<Indexable> implements Buffer<Indexable> {
