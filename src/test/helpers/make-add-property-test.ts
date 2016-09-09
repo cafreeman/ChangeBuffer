@@ -1,22 +1,22 @@
-import { ChangeBuffer } from '../../src/index';
-import * as _ from 'lodash/fp';
+import { ChangeBuffer, Indexable} from '../../lib/index';
+import { get } from 'lodash/fp';
 
-interface AddPropTestConfig {
-  testTitle: string;
-  startingObject: {};
+export interface AddPropTestConfig {
+  title: string;
+  data: Indexable;
   path: string;
   newValue: any;
 }
 
 export function makeAddPropertyTest(config: AddPropTestConfig) {
-  const { testTitle, startingObject, path, newValue } = config;
+  const { title, data, path, newValue } = config;
   return (expect) => {
-    let buffer: ChangeBuffer;
+    let buffer: ChangeBuffer<Indexable>;
     beforeEach(() => {
-      buffer = new ChangeBuffer(startingObject);
+      buffer = new ChangeBuffer(data);
     });
 
-    describe(testTitle, () => {
+    describe(title, () => {
       beforeEach(() => {
         buffer.set(path, newValue);
       });
@@ -26,7 +26,7 @@ export function makeAddPropertyTest(config: AddPropTestConfig) {
       });
 
       it('does not add the property to the original object', () => {
-        expect(_.get(path, startingObject)).to.be.undefined;
+        expect(get(path, data)).to.be.undefined;
       });
 
       describe('applying the buffer', () => {
@@ -36,11 +36,11 @@ export function makeAddPropertyTest(config: AddPropTestConfig) {
         });
 
         it('produces a new object with the added property', () => {
-          expect(_.get(path, newThing)).to.equal(newValue);
+          expect(get(path, newThing)).to.equal(newValue);
         });
 
         it('does not change the original object', () => {
-          expect(_.get(path, startingObject)).to.be.undefined;
+          expect(get(path, data)).to.be.undefined;
         });
       });
     });

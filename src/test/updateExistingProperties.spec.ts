@@ -1,11 +1,11 @@
 import { expect } from 'chai';
-import { chris, sunAlsoRises, Book, favoriteBooks } from './fixtures/chris';
+import { chris, books, favoriteBooks } from './fixtures/chris';
 import { makeSetPropertyTest } from './helpers/make-set-property-test';
 
 describe('Updating existing properties on a ChangeBuffer', () => {
   let rootValueTest = {
-    testTitle: 'setting a root-level value',
-    startingObject: chris,
+    title: 'setting a root-level value',
+    data: chris,
     path: 'firstName',
     oldValue: 'Chris',
     newValue: 'Christopher'
@@ -14,9 +14,9 @@ describe('Updating existing properties on a ChangeBuffer', () => {
   makeSetPropertyTest(rootValueTest)(expect);
 
   let nestedValueTest = {
-    testTitle: 'setting a nested value',
-    startingObject: chris,
-    path: 'favoriteBooks[0].title',
+    title: 'setting a nested value',
+    data: chris,
+    path: 'favoriteBooks.0.title',
     oldValue: 'The Sun Also Rises',
     newValue: 'A Moveable Feast'
   };
@@ -24,21 +24,21 @@ describe('Updating existing properties on a ChangeBuffer', () => {
   makeSetPropertyTest(nestedValueTest)(expect);
 
   let nestedObjectTest = {
-    testTitle: 'setting a nested object',
-    startingObject: chris,
-    path: 'favoriteBooks[0]',
-    oldValue: sunAlsoRises,
-    newValue: new Book('The Trial', 'Franz Kafka')
+    title: 'setting a nested object',
+    data: chris,
+    path: 'favoriteBooks.0',
+    oldValue: books.sunAlsoRises,
+    newValue: books.theTrial
   };
 
   makeSetPropertyTest(nestedObjectTest)(expect);
 
   let arrayOfObjectsTest = {
-    testTitle: 'setting an array of objects',
-    startingObject: chris,
+    title: 'setting an array of objects',
+    data: chris,
     path: 'favoriteBooks',
     oldValue: favoriteBooks,
-    newValue: [new Book('The Trial', 'Franz Kafka'), new Book('Tropic of Canceer', 'Henry Miller')]
+    newValue: [books.theTrial, books.tropicOfCancer]
   };
 
   makeSetPropertyTest(arrayOfObjectsTest)(expect);

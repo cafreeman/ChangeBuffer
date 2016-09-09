@@ -1,18 +1,29 @@
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/lib/index.ts',
   output: {
-    filename: 'dist/index.js'
+    filename: 'dist/cjs/index.js',
   },
   resolve: {
-    extensions: ['.ts', '.js', '']
+    extensions: ['.ts', '.js', ''],
   },
   module: {
     loaders: [
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'ts-loader'
-      }
-    ]
-  }
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015'],
+        },
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        loader: 'awesome-typescript-loader',
+        options: {
+          tsconfig: 'tsconfig-test.json'
+        }
+      },
+    ],
+  },
 }

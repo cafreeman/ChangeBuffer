@@ -3,11 +3,11 @@
     "module": "es2015",
     "target": "es6",
     "noImplicitAny": false,
-    "outDir": "dist",
+    "outDir": "build",
     "strictNullChecks": true,
-    "declaration": true,
-    "sourceMap": true,
-    "pretty": true
+    "declaration": false,
+    "sourceMap": false,
+    "pretty": false
   },
   "compileOnSave": false,
   "include": [
