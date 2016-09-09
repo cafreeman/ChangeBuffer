@@ -6,7 +6,8 @@
   "main": "dist/cjs/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "karma start",
+    "test": "karma start --single-run",
+    "test:watch": "karma start",
     "bundle": "webpack",
     "compile": "npm run clean && tsc",
     "build": "npm run bundle && tsc",
