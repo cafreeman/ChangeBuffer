@@ -1,0 +1,30 @@
+{
+  "name": "change-buffer",
+  "version": "0.0.1",
+  "description": "Immutable Change Buffers",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf build dist",
+    "compile": "npm run clean && tsc -p tsconfig-prod.json",
+    "test": "npm run clean && tsc && ava",
+    "test:watch": "npm run test -- --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.15.0"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "typescript": "^2.0.2"
+  },
+  "ava": {
+    "files": [
+      "build/tests/**/*.spec.js"
+    ],
+    "source": [
+      "build/src/**/*.js"
+    ],
+    "verbose": true
+  }
+}

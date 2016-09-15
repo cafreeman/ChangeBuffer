@@ -1,0 +1,7 @@
+{
+  "name": "change-buffer",
+  "dependencies": {},
+  "globalDependencies": {
+    "lodash": "registry:dt/lodash#4.14.0+20160830145422"
+  }
+}
