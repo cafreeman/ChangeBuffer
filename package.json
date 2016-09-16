@@ -11,8 +11,12 @@
     "test": "npm run clean && tsc && ava",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Chris Freeman",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cafreeman/ChangeBuffer.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.15.0"
   },
