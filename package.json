@@ -8,7 +8,7 @@
   "scripts": {
     "clean": "rm -rf build dist",
     "compile": "npm run clean && tsc -p tsconfig-prod.json",
-    "test": "npm run clean && tsc && ava",
+    "test": "rm -rf build && tsc && ava",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Chris Freeman",
