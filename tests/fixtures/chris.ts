@@ -5,7 +5,7 @@ export class Book {
 const sunAlsoRises = new Book('The Sun Also Rises', 'Ernest Hemingway');
 const kavAndClay = new Book('The Amazing Adventures of Kavalier and Clay', 'Michael Chabon');
 const theTrial = new Book('The Trial', 'Franz Kafka')
-const tropicOfCancer = new Book('Tropic of Canceer', 'Henry Miller');
+const tropicOfCancer = new Book('Tropic of Cancer', 'Henry Miller');
 
 export const books = {
   sunAlsoRises,
