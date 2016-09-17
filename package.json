@@ -1,6 +1,6 @@
 {
   "name": "change-buffer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Immutable Change Buffers",
   "main": "dist/cjs/index.js",
   "esnext:main": "dist/index.js",
